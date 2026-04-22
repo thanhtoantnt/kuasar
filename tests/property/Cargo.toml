@@ -8,6 +8,7 @@ license = "Apache-2.0"
 proptest = "1.5"
 vmm-sandboxer = { path = "../../vmm/sandbox" }
 anyhow = "1.0"
+nix = "0.26"
 
 [lib]
 name = "kuasar_property_tests"

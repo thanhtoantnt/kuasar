@@ -19,13 +19,25 @@ docker run --rm -v $(pwd):/workspace -w /workspace rust:1.85 \
   bash -c "apt-get update && apt-get install -y cmake protobuf-compiler libprotobuf-dev && cargo test -p kuasar-property-tests"
 ```
 
+## Bugs Found
+
+See [BUGS_FOUND.md](./BUGS_FOUND.md) for detailed analysis.
+
+| Bug | Severity | Location |
+|-----|----------|----------|
+| `checked_compute_delta` overflow | **High** | client.rs:369 |
+| `merge_cpusets` empty string | **Medium** | utils.rs:197 |
+
 ## Test Coverage
 
 | Module | Tests | Properties Verified |
 |--------|-------|---------------------|
-| `vmm_sandbox/utils` | 8 | CPU set parsing roundtrip, merge, intersection symmetry |
-| `vmm_sandbox/network` | 7 | IPv4/IPv6 CIDR parsing, MAC address format |
+| `vmm_sandbox/utils` | 14 | CPU set parsing, merge, intersection |
+| `vmm_sandbox/network` | 7 | IPv4/IPv6 CIDR, MAC address parsing |
+| `vmm_sandbox/client` | 6 | Clock delta computation, overflow detection |
 | `shim` | 3 | ID format validation |
+
+**Total:** 31 tests, 29 pass, 2 fail (real bugs)
 
 ## Custom Strategies
 
