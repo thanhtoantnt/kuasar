@@ -116,7 +116,7 @@ pub fn get_total_resources(data: &SandboxData) -> Option<LinuxContainerResources
         })
 }
 
-fn merge_resources(
+pub fn merge_resources(
     resource1: &LinuxContainerResources,
     resource2: &LinuxContainerResources,
 ) -> LinuxContainerResources {
@@ -194,7 +194,7 @@ fn merge_resources(
     }
 }
 
-fn merge_cpusets(cpusets1: &str, cpusets2: &str) -> Result<String> {
+pub fn merge_cpusets(cpusets1: &str, cpusets2: &str) -> Result<String> {
     let cpuset1_parts = cpuset_parts(cpusets1)?;
     let cpuset2_parts = cpuset_parts(cpusets2)?;
     let mut cpuset_parts = vec![];
@@ -221,7 +221,7 @@ fn merge_cpusets(cpusets1: &str, cpusets2: &str) -> Result<String> {
         .join(","))
 }
 
-fn merge_cpuset(base: (u32, u32), delta: (u32, u32)) -> (u32, u32) {
+pub fn merge_cpuset(base: (u32, u32), delta: (u32, u32)) -> (u32, u32) {
     let (mut low, mut high) = base;
     if delta.1 < low {
         return (low, high);
@@ -238,7 +238,7 @@ fn merge_cpuset(base: (u32, u32), delta: (u32, u32)) -> (u32, u32) {
     (low, high)
 }
 
-fn cpuset_intersect(cpuset1: (u32, u32), cpuset2: (u32, u32)) -> bool {
+pub fn cpuset_intersect(cpuset1: (u32, u32), cpuset2: (u32, u32)) -> bool {
     if cpuset2.1 < cpuset1.0 {
         return false;
     }
@@ -248,7 +248,7 @@ fn cpuset_intersect(cpuset1: (u32, u32), cpuset2: (u32, u32)) -> bool {
     true
 }
 
-fn cpuset_parts(cpuset: &str) -> Result<Vec<(u32, u32)>> {
+pub fn cpuset_parts(cpuset: &str) -> Result<Vec<(u32, u32)>> {
     let mut cpuset1_parts = vec![];
     let c1 = cpuset.split(',');
     for ps in c1 {
@@ -257,7 +257,7 @@ fn cpuset_parts(cpuset: &str) -> Result<Vec<(u32, u32)>> {
     Ok(cpuset1_parts)
 }
 
-fn cpuset_one_part(cpuset: &str) -> Result<(u32, u32)> {
+pub fn cpuset_one_part(cpuset: &str) -> Result<(u32, u32)> {
     let parts = cpuset.split('-').collect::<Vec<&str>>();
     let low = parts[0]
         .trim()

@@ -235,7 +235,7 @@ impl DeviceMatcher for TypeAddrDeviceMatcher {
     }
 }
 
-fn convert_sysctl_to_proc_path(sysctl: &str) -> String {
+pub fn convert_sysctl_to_proc_path(sysctl: &str) -> String {
     let base_path = "/proc/sys/";
     let proc_path = sysctl.replace('.', "/");
     format!("{}{}", base_path, proc_path)

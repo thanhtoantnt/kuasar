@@ -78,7 +78,7 @@ proptest! {
     }
 
     #[test]
-    fn merge_cpuset_no_overlap_stays_separate(
+    fn merge_cpuset_non_overlapping_returns_base(
         a in 0u32..100u32,
         b in 0u32..100u32,
         c in 200u32..300u32,
@@ -87,7 +87,6 @@ proptest! {
         let (a1, b1) = if a <= b { (a, b) } else { (b, a) };
         let (c1, d1) = if c <= d { (c, d) } else { (d, c) };
         let merged = merge_cpuset((a1, b1), (c1, d1));
-        let merged2 = merge_cpuset((c1, d1), (a1, b1));
-        prop_assert_eq!(merged, merged2);
+        prop_assert_eq!(merged, (a1, b1));
     }
 }

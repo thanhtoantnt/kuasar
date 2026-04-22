@@ -2191,12 +2191,8 @@ name = "kuasar-property-tests"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "nix 0.26.4",
  "proptest",
- "quark-sandboxer",
- "vmm-common",
  "vmm-sandboxer",
- "vmm-task",
 ]
 
 [[package]]

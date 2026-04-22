@@ -341,7 +341,7 @@ pub fn _unmount(target: &str, flags: i32) -> Result<()> {
     }
 }
 
-fn parse_options(options: &[String]) -> (MsFlags, Vec<String>) {
+pub fn parse_options(options: &[String]) -> (MsFlags, Vec<String>) {
     let mut flags: MsFlags = MsFlags::from_bits(0).unwrap();
     let mut data: Vec<String> = Vec::new();
     let mut handle = |x: String| {

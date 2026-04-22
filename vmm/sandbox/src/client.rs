@@ -366,7 +366,7 @@ async fn do_once_sync_clock(
 }
 
 // delta = ((c_send - c_arrive) + (s_arrive - s_send)) / 2
-fn checked_compute_delta(c_send: i64, c_arrive: i64, s_send: i64, s_arrive: i64) -> Result<i64> {
+pub fn checked_compute_delta(c_send: i64, c_arrive: i64, s_send: i64, s_arrive: i64) -> Result<i64> {
     let delta_client = c_send
         .checked_sub(c_arrive)
         .ok_or_else(|| anyhow!("integer overflow {} - {}", c_send, c_arrive))?;

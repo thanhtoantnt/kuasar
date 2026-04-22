@@ -22,7 +22,7 @@ mod cgroup;
 mod client;
 mod container;
 mod io;
-mod network;
+pub mod network;
 mod param;
 mod storage;
 mod vm;
@@ -36,3 +36,6 @@ pub mod sandbox;
 pub mod stratovirt;
 pub mod utils;
 pub mod version;
+
+pub use utils::property_test_utils;
+pub use client::property_test_utils as client_property_test_utils;

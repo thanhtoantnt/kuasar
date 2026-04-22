@@ -7,10 +7,6 @@ license = "Apache-2.0"
 [dependencies]
 proptest = "1.5"
 vmm-sandboxer = { path = "../../vmm/sandbox" }
-vmm-task = { path = "../../vmm/task" }
-vmm-common = { path = "../../vmm/common" }
-quark-sandboxer = { path = "../../quark" }
-nix = "0.26"
 anyhow = "1.0"
 
 [lib]
