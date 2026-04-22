@@ -8,6 +8,7 @@ members = [
     "wasm",
     "shim",
     "tools/kuasar-ctl",
+    "tests/property",
 ]
 exclude = [
     "tests/e2e"

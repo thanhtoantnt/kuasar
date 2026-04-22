@@ -407,6 +407,10 @@ pub(crate) async fn publish_event(envelope: Envelope) -> Result<()> {
     Ok(())
 }
 
+pub mod property_test_utils {
+    pub use super::checked_compute_delta;
+}
+
 #[cfg(test)]
 mod tests {
     use std::io::ErrorKind;

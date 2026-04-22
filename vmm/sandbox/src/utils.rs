@@ -533,6 +533,13 @@ pub fn start_watchdog() {
     }
 }
 
+pub mod property_test_utils {
+    pub use super::{
+        cpuset_intersect, cpuset_one_part, cpuset_parts, cpuset_tostring, merge_cpuset,
+        merge_cpusets, merge_resources,
+    };
+}
+
 #[cfg(test)]
 mod tests {
     use temp_dir::TempDir;

@@ -368,6 +368,10 @@ pub fn get_mount_type(mount_point: &str) -> Result<String> {
     Err(anyhow!("get type for mount point {} failed", mount_point))
 }
 
+pub mod property_test_utils {
+    pub use super::parse_options;
+}
+
 #[cfg(test)]
 mod tests {
     use temp_dir::TempDir;

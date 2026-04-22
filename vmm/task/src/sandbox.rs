@@ -375,6 +375,10 @@ pub async fn setup_sandbox(config: &PodSandboxConfig) -> Result<()> {
     Ok(())
 }
 
+pub mod property_test_utils {
+    pub use super::convert_sysctl_to_proc_path;
+}
+
 #[cfg(test)]
 mod tests {
     use super::convert_sysctl_to_proc_path;

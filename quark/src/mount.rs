@@ -360,3 +360,7 @@ fn parse_options(options: &[String]) -> (MsFlags, Vec<String>) {
     });
     (flags, data)
 }
+
+pub mod property_test_utils {
+    pub use super::parse_options;
+}
